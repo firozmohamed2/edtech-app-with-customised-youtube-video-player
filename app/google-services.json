@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "269589994279",
+    "firebase_url": "https://my-application-7fd40-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "my-application-7fd40",
+    "storage_bucket": "my-application-7fd40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269589994279:android:cb38c1971cb9590124e702",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "269589994279-pcpq0cmnb36kn2h7hct77fkeo7b5sog6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaLNM0XpKweGwTT-P36qhebMTwFh-FCYg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269589994279-pcpq0cmnb36kn2h7hct77fkeo7b5sog6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269589994279:android:03efe8e61939562a24e702",
+        "android_client_info": {
+          "package_name": "com.learn.ytbplayer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "269589994279-pcpq0cmnb36kn2h7hct77fkeo7b5sog6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaLNM0XpKweGwTT-P36qhebMTwFh-FCYg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269589994279-pcpq0cmnb36kn2h7hct77fkeo7b5sog6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269589994279:android:c9cdca63c5e5cd3324e702",
+        "android_client_info": {
+          "package_name": "com.mach1.liya"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "269589994279-pcpq0cmnb36kn2h7hct77fkeo7b5sog6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaLNM0XpKweGwTT-P36qhebMTwFh-FCYg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269589994279-pcpq0cmnb36kn2h7hct77fkeo7b5sog6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
