@@ -103,6 +103,7 @@
         app:cardUseCompatPadding="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:tag="set"
         >
 
         <ImageView
@@ -172,6 +173,7 @@
         app:cardUseCompatPadding="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:tag="arithmeticprogression"
         >
 
         <ImageView

@@ -39,19 +39,57 @@ public class videoPageActivity extends AppCompatActivity {
 
 
         LinearLayout layout1= findViewById(R.id.layout_1);
+        LinearLayout layout2= findViewById(R.id.layout_2);
+        LinearLayout layout3= findViewById(R.id.layout_3);
+        LinearLayout layout4= findViewById(R.id.layout_4);
         layout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(videoPageActivity.this,ChapterActivity.class);
+                Intent intent=new Intent(videoPageActivity.this,Chapter2Activity.class);
+
+                intent.putExtra("key","Mathematics");
                 startActivity(intent);
             }
         });
 
+
+        layout2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(videoPageActivity.this,Chapter2Activity.class);
+
+                intent.putExtra("key","Biology");
+                startActivity(intent);
+            }
+        });
+
+        layout3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(videoPageActivity.this,Chapter2Activity.class);
+
+                intent.putExtra("key","Physics");
+                startActivity(intent);
+            }
+        });
+
+
+        layout4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(videoPageActivity.this,Chapter2Activity.class);
+
+                intent.putExtra("key","Chemistry");
+                startActivity(intent);
+            }
+        });
+
+
         TextView tv = findViewById(R.id.gradient_tv);
         tv.setText("ADAPTIVE METHODOLOGY");
-        tv.setTextColor(Color.parseColor("#F9D976"));
+        tv.setTextColor(Color.parseColor("#48298A"));
         Shader textShader = new LinearGradient(0, 90, tv.getPaint().measureText(tv.getText().toString()), tv.getTextSize(),
-                new int[]{Color.parseColor("#FF6D00"), Color.parseColor("#FFFA4D4D"),Color.parseColor("#FF00BFA5")},
+                new int[]{Color.parseColor("#48298A"), Color.parseColor("#00B0FF"),Color.parseColor("#00B0FF")},
                 new float[]{0, 1,2}, Shader.TileMode.CLAMP);
 
         tv.getPaint().setShader(textShader);

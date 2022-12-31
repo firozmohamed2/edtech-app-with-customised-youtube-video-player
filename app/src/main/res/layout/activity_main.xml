@@ -99,7 +99,13 @@ app:enableAutomaticInitialization="false"
       <Button
           android:layout_width="40dp"
           android:layout_height="40dp"
-          style="@style/option_button_style"
+
+          android:textColor="#000"
+          android:fontFamily="@font/figtreeregular"
+          android:alpha="0.8"
+          app:backgroundTint="@null"
+          android:background="@drawable/button_bg"
+
           app:layout_constraintEnd_toStartOf="@id/option_button_B"
           app:layout_constraintTop_toTopOf="parent"
           android:id="@+id/option_button_A"
@@ -115,6 +121,38 @@ app:enableAutomaticInitialization="false"
           app:layout_constraintTop_toTopOf="parent"
           android:id="@+id/option_button_D"
           android:layout_marginStart="20dp"/>
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@drawable/video_bg"
+       android:id="@+id/clear_or_not_layout"
+       android:padding="10dp">
+
+      <Button
+          android:layout_width="140dp"
+          android:layout_height="40dp"
+          style="@style/option_button_style"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          android:id="@+id/button_not_clear"
+          android:text="not clear"
+          android:layout_marginStart="160dp"/>
+      <Button
+          android:layout_width="140dp"
+          android:layout_height="40dp"
+          style="@style/option_button_style"
+          android:text="clear"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          android:id="@+id/button_clear"
+
+          android:layout_marginEnd="160dp"/>
+
+
 
    </androidx.constraintlayout.widget.ConstraintLayout>
 

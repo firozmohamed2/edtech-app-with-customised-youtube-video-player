@@ -10,26 +10,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ytbplayer">
         <activity
-            android:name=".TopicActivity"
-            android:exported="true" >
-
-        </activity>
+            android:name=".Chapter2Activity"
+            android:exported="true" />
         <activity
-            android:name=".ChapterActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true">
-
-        </activity>
-        <activity
-            android:name=".videoPageActivity"
-            android:exported="true"
-            android:label="@string/title_activity_video_page"
-            android:theme="@style/Theme.Ytbplayer.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".TopicsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TopicActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ChapterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".videoPageActivity"
+            android:exported="true"
+            android:label="@string/title_activity_video_page"
+            android:theme="@style/Theme.Ytbplayer.NoActionBar"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true" />

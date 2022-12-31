@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/drawable-v24/button_bg_green.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/drawable-v24/button_bg_red.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/drawable-v24/forward_arrow_black.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/drawable/arrow_backward.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/drawable/arrow_reverse.xml" value="0.1" />
@@ -11,12 +13,18 @@
         <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/drawable/button_bg.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/drawable/forward_arrow.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/drawable/ic_logo.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/drawable/pause.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/drawable/video_bg.xml" value="0.19166666666666668" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/layout/activity_chapter.xml" value="0.1" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/layout/activity_chapter.xml" value="0.22" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/layout/activity_chapter2.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/layout/activity_splash_screen.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/layout/activity_topic.xml" value="0.17552083333333332" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/layout/activity_video_page.xml" value="0.22" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/layout/activity_topics.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/layout/activity_video_page.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/layout/chapter_layout.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ytbplayer/app/src/main/res/layout/topic_layout.xml" value="0.1" />
       </map>
     </option>
   </component>

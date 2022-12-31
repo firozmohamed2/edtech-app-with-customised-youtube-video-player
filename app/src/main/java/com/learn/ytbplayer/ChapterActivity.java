@@ -10,8 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class ChapterActivity extends AppCompatActivity {
+public class ChapterActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,7 @@ public class ChapterActivity extends AppCompatActivity {
         layout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(ChapterActivity.this,TopicActivity.class);
+                Intent intent=new Intent(ChapterActivity.this,TopicsActivity.class);
                 startActivity(intent);
             }
         });
@@ -36,5 +37,10 @@ public class ChapterActivity extends AppCompatActivity {
                 new float[]{0, 1,2}, Shader.TileMode.CLAMP);
 
         tv.getPaint().setShader(textShader);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(ChapterActivity.this, v.getTag().toString(), Toast.LENGTH_SHORT).show();
     }
 }

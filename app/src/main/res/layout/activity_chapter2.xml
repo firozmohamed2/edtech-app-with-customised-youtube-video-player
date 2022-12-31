@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ChapterActivity"
+
+
+    android:background="#fefefe">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#fff"
+                >
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/menu"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+
+                    android:contentDescription="@string/app_name" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ernest_learning"
+                    android:paddingVertical="10dp"
+                    android:paddingHorizontal="12dp"
+                    android:fontFamily="@font/figtreeblack"
+                    android:textColor="#fff"
+                    android:textSize="20sp"/>
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="12dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                android:fontFamily="@font/figtreeregular"
+                android:textColor="#000"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MATHEMATICS"
+                android:id="@+id/gradient_tv"
+
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="12dp"
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/figtreemedium"
+                android:textColor="#27A2ED"
+                android:textStyle="bold"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CHAPTERS"
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="12dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="@font/figtreebold"
+                android:textColor="#000"
+                android:textSize="14sp"/>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@+id/nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recycler_view"
+        />
+
+
+
+</LinearLayout>

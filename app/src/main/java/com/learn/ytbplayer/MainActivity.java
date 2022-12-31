@@ -27,6 +27,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFram
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.YouTubePlayerTracker;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,8 +36,9 @@ public class MainActivity extends AppCompatActivity {
     ImageButton backwardButton ;
     ImageButton playPauseButton ;
     Button optionButtonA ,optionButtonB,optionButtonC, optionButtonD;
+    Button clearButton, notClearButton;
 
-    ConstraintLayout optionLayout ;
+    ConstraintLayout optionLayout,clearLayout ;
 
 
     int rightAnswer;
@@ -50,18 +52,25 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    String[] startArray;
-    String[] endArray;
-    String[] rightOptionArray;
-    String[] rightArray;
-    String[] wrongArray;
+//    String[] startArray;
+//    String[] endArray;
+//    String[] rightOptionArray;
+//    String[] rightArray;
+//    String[] wrongArray;
     String videoId;
+
+    List<String> startList = new ArrayList<>();
+    List<String> endList = new ArrayList<>();
+    List<String> rightOptionList = new ArrayList<>();
+    List<String> rightList = new ArrayList<>();
+    List<String> wrongList = new ArrayList<>();
 
 
      FirebaseFirestore db;
     private static final String TAG = "Firestore";
 
 
+    String value,chapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,8 +88,11 @@ public class MainActivity extends AppCompatActivity {
          optionButtonB = findViewById(R.id.option_button_B);
          optionButtonC = findViewById(R.id.option_button_C);
          optionButtonD = findViewById(R.id.option_button_D);
+        clearButton = findViewById(R.id.button_clear);
+        notClearButton = findViewById(R.id.button_not_clear);
 
          optionLayout = findViewById(R.id.option_layout);
+        clearLayout = findViewById(R.id.clear_or_not_layout);
 
 
          rightAnswer=0;
@@ -94,17 +106,25 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-       startArray= new String[]{"0", "100", "150", "170", "190"};
-         endArray= new String[]{"10", "110", "160", "175", "195"};
-        rightOptionArray= new String[]{"2", "-1", "0", "-1", "-1"};
-         rightArray= new String[]{"1", "3", "3", "-1", "-1"};
-         wrongArray= new String[]{"2", "4", "4", "-1", "-1"};
+//       startArray= new String[]{"0", "100", "150", "170", "190"};
+//         endArray= new String[]{"10", "110", "160", "175", "195"};
+//        rightOptionArray= new String[]{"2", "-1", "0", "-1", "-1"};
+//         rightArray= new String[]{"1", "3", "3", "-1", "-1"};
+//         wrongArray= new String[]{"2", "4", "4", "-1", "-1"};
 
 
 
         playPauseButton.setTag(R.drawable.pause);
 
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            value = extras.getString("key");
+            chapter = extras.getString("chapter");
+
+
+            //The key argument here must match that used in the other activity
+        }
 
 
 
@@ -114,18 +134,20 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        startTime=Integer.parseInt(startArray[0]);
-        endTime=Integer.parseInt(endArray[0]);
-        rightAnswer=Integer.parseInt(rightOptionArray[0]);
-        nextRightId=Integer.parseInt(rightArray[0]);
-        nextWrongId=Integer.parseInt(wrongArray[0]);
+
+
+
 
 
 
         if(rightAnswer==-1){
             optionLayout.setVisibility(View.GONE);
+            clearLayout.setVisibility(View.GONE);
+
+
+
         }
-        else{
+        else {
             optionLayout.setVisibility(View.VISIBLE);
         }
 
@@ -160,12 +182,15 @@ public class MainActivity extends AppCompatActivity {
        },true,iFramePlayerOptions);
 
 
+
+
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
 
                 //firebase data retrieve check
-                DocumentReference docRef = db.collection("class10notes").document("ap1");
+                DocumentReference docRef = db.collection("class11notes").document("content").
+                        collection(chapter).document(value);
                 docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -176,14 +201,23 @@ public class MainActivity extends AppCompatActivity {
 
 
                                 videoId= document.getData().get("videoid").toString();
-                                List<String> startList = (List<String>) document.get("startArray");
-                                List<String> endList = (List<String>) document.get("endArray");
-                                List<String> rightOptionList = (List<String>) document.get("rightOptionArray");
-                                List<String> rightList = (List<String>) document.get("rightArray");
-                                List<String> wrongList = (List<String>) document.get("wrongArray");
+                                 startList = (List<String>) document.get("startArray");
+                                 endList = (List<String>) document.get("endArray");
+                                 rightOptionList = (List<String>) document.get("rightOptionArray");
+                                 rightList = (List<String>) document.get("rightArray");
+                                 wrongList = (List<String>) document.get("wrongArray");
 
-                                Toast.makeText(MainActivity.this, "DocumentSnapshot data: " + startList.get(0),
-                                        Toast.LENGTH_SHORT).show();
+
+
+
+                                startTime=Integer.parseInt(startList.get(0));
+
+                                endTime=Integer.parseInt(endList.get(0));
+//                                Toast.makeText(MainActivity.this, "DocumentSnapshot data: " + endTime,
+//                                        Toast.LENGTH_SHORT).show();
+                                rightAnswer=Integer.parseInt(rightOptionList.get(0));
+                                nextRightId=Integer.parseInt(rightList.get(0));
+                                nextWrongId=Integer.parseInt(wrongList.get(0));
 
 
 
@@ -201,11 +235,16 @@ public class MainActivity extends AppCompatActivity {
 
                             } else {
                                 Log.d(TAG, "No such document");
-                                Toast.makeText(MainActivity.this, "No such document",
+//                                Toast.makeText(MainActivity.this, "No such document",
+//                                        Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Sorry for inconvenience",
                                         Toast.LENGTH_SHORT).show();
+                                finish();
                             }
                         } else {
                             Log.d(TAG, "get failed with ", task.getException());
+                            Log.d(TAG, "No such document");
+
                         }
                     }
                 });
@@ -347,16 +386,16 @@ public class MainActivity extends AppCompatActivity {
                         youTubePlayer.pause();
                     }
                     else{
-                        if( Integer.parseInt(rightArray[currentLevel])==-1){
+                        if( Integer.parseInt(rightList.get(currentLevel))==-1){
                             youTubePlayer.pause();
                         }
                         else{
-                            currentLevel=Integer.parseInt(rightArray[currentLevel]);
-                            startTime=Integer.parseInt(startArray[currentLevel]);
-                            endTime=Integer.parseInt(endArray[currentLevel]);
-                            rightAnswer=Integer.parseInt(rightOptionArray[currentLevel]);
-                            nextRightId=Integer.parseInt(rightArray[currentLevel]);
-                            nextWrongId=Integer.parseInt(wrongArray[currentLevel]);
+                            currentLevel=Integer.parseInt(rightList.get(currentLevel));
+                            startTime=Integer.parseInt(startList.get(currentLevel));
+                            endTime=Integer.parseInt(endList.get(currentLevel));
+                            rightAnswer=Integer.parseInt(rightOptionList.get(currentLevel));
+                            nextRightId=Integer.parseInt(rightList.get(currentLevel));
+                            nextWrongId=Integer.parseInt(wrongList.get(currentLevel));
                             youTubePlayer.seekTo(startTime);
                             youTubePlayer.play();
 
@@ -429,50 +468,52 @@ public class MainActivity extends AppCompatActivity {
             select = num;
             if (num == rightAnswer) {
                 selectedBtn.setBackgroundColor(Color.parseColor("#00ff00"));
+                selectedBtn.setBackground(getResources().getDrawable(R.drawable.button_bg_green));
+
 
                 selectedBtn.setTextColor(Color.parseColor("#ffffff"));
 
-                if (Integer.parseInt(rightArray[currentLevel]) == -1) {
+                if (Integer.parseInt(rightList.get(currentLevel)) == -1) {
                     player.pause();
                 } else {
-                    currentLevel = Integer.parseInt(rightArray[currentLevel]);
-                    startTime = Integer.parseInt(startArray[currentLevel]);
-                    endTime = Integer.parseInt(endArray[currentLevel]);
-                    rightAnswer = Integer.parseInt(rightOptionArray[currentLevel]);
-                    nextRightId = Integer.parseInt(rightArray[currentLevel]);
-                    nextWrongId = Integer.parseInt(wrongArray[currentLevel]);
+                    currentLevel=Integer.parseInt(rightList.get(currentLevel));
+                    startTime=Integer.parseInt(startList.get(currentLevel));
+                    endTime=Integer.parseInt(endList.get(currentLevel));
+                    rightAnswer=Integer.parseInt(rightOptionList.get(currentLevel));
+                    nextRightId=Integer.parseInt(rightList.get(currentLevel));
+                    nextWrongId=Integer.parseInt(wrongList.get(currentLevel));
                     player.seekTo(startTime);
                     player.play();
 
                 }
             } else {
 
-                selectedBtn.setBackgroundColor(Color.parseColor("#ff0000"));
+                selectedBtn.setBackground(getResources().getDrawable(R.drawable.button_bg_red));
 
                 selectedBtn.setTextColor(Color.parseColor("#ffffff"));
                 if (rightAnswer == 0) {
-                    optionButtonA.setBackgroundColor(Color.parseColor("#00ff00"));
+                    optionButtonA.setBackground(getResources().getDrawable(R.drawable.button_bg_green));
                     optionButtonA.setTextColor(Color.parseColor("#ffffff"));
                 } else if (rightAnswer == 1) {
-                    optionButtonB.setBackgroundColor(Color.parseColor("#00ff00"));
+                    optionButtonB.setBackground(getResources().getDrawable(R.drawable.button_bg_green));
                     optionButtonB.setTextColor(Color.parseColor("#ffffff"));
                 } else if (rightAnswer == 2) {
-                    optionButtonC.setBackgroundColor(Color.parseColor("#00ff00"));
+                    optionButtonC.setBackground(getResources().getDrawable(R.drawable.button_bg_green));
                     optionButtonC.setTextColor(Color.parseColor("#ffffff"));
                 } else {
-                    optionButtonD.setBackgroundColor(Color.parseColor("#00ff00"));
+                    optionButtonD.setBackground(getResources().getDrawable(R.drawable.button_bg_green));
                     optionButtonD.setTextColor(Color.parseColor("#ffffff"));
                 }
 
-                if (Integer.parseInt(wrongArray[currentLevel]) == -1) {
+                if (Integer.parseInt(wrongList.get(currentLevel)) == -1) {
                     player.pause();
                 } else {
-                    currentLevel = Integer.parseInt(wrongArray[currentLevel]);
-                    startTime = Integer.parseInt(startArray[currentLevel]);
-                    endTime = Integer.parseInt(endArray[currentLevel]);
-                    rightAnswer = Integer.parseInt(rightOptionArray[currentLevel]);
-                    nextRightId = Integer.parseInt(rightArray[currentLevel]);
-                    nextWrongId = Integer.parseInt(wrongArray[currentLevel]);
+                    currentLevel=Integer.parseInt(wrongList.get(currentLevel));
+                    startTime=Integer.parseInt(startList.get(currentLevel));
+                    endTime=Integer.parseInt(endList.get(currentLevel));
+                    rightAnswer=Integer.parseInt(rightOptionList.get(currentLevel));
+                    nextRightId=Integer.parseInt(rightList.get(currentLevel));
+                    nextWrongId=Integer.parseInt(wrongList.get(currentLevel));
                     player.seekTo(startTime);
                     player.play();
 
@@ -505,7 +546,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     void clear(Button button){
-        button.setBackgroundColor(Color.parseColor("#ffffff"));
+        button.setBackground(getResources().getDrawable(R.drawable.button_bg));
         button.setTextColor(Color.parseColor("#000000"));
     }
 
